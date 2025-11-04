@@ -1,0 +1,17 @@
+function target = select_drone_target(fire, params) % Chooses MaxIntensityCell
+
+intensity = fire.intensity;                   % Intensity of target will be gotton from fire intensity from another .m
+firelevel = params.stop_condition;            % Minimum fire level before stop condition to leave cell 
+
+[maxVal, idx] = max(intensity(:));            % Finds the highest intensity cell, max = highest, idx = index postion 
+
+
+if maxVal < firelevel                         % If the highest intensity is lower than the minimum fire level, leaves cell 
+    target = [];
+    return
+end
+
+[row, col] = ind2sub(size(intensity), idx);     % Makes the index position into a row and collum position
+target = [row, col];                            % Give the target an (x,y) sort of postion but with rows and collums
+
+end
