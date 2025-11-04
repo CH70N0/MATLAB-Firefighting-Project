@@ -5,9 +5,8 @@ function fire = fire_step(fire, params)
 %   Implements the cellular-automaton fire model:
 %       1. Fire spreads to the four orthogonal neighbors (N, S, E, W)
 %          based on params.spreadK.
-%       2. (Optional) Diagonal spread can be added using params.diagSpreadProb.
-%       3. Global decay reduces fire intensity everywhere.
-%       4. Intensities are clamped to [0,1] to maintain valid bounds.
+%       2. Global decay reduces fire intensity everywhere.
+%       3. Intensities are clamped to [0,1] to maintain valid bounds.
 %
 % INPUT:
 %   fire (struct)
@@ -27,8 +26,8 @@ function fire = fire_step(fire, params)
 %
 
 
-I = fire.intensity;   % current intensity map
-k = params.spreadK;   % orthogonal spread coefficient
+I = fire.intensity; % current intensity map
+k = params.spreadK; % orthogonal spread coefficient
 
 % --- 1. Orthogonal spread (N,S,E,W) via convolution kernel ---
 K = [0 k 0;
@@ -60,4 +59,5 @@ newI(newI > 1) = 1;
 
 % Save updated intensity back to struct
 fire.intensity = newI;
+
 end
