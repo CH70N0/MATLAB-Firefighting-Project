@@ -8,7 +8,7 @@ stopThresh  = params.stop_condition;
 
     if isempty(drone.target) || is_target_valid(drone.target, fire, stopThresh)  % Checks for valid target, if cell is on fire and empty
 
-        drone.target = select_target(fire, params);
+        drone.target = select_drone_target(fire, params);
 
     end
 
