@@ -27,7 +27,7 @@ col = params.grid_size(2);
 intensity = zeros(row, col);
 
 % Add random hotspots
-for k = 1:params.initialHotspots
+for k = 1:params.starting_hotspots
     row0 = randi([3, row-2], 1);  % avoid edges
     col0 = randi([3, col-2], 1);
     intensity(row0, col0) = 1;
@@ -36,4 +36,5 @@ end
 % Store in struct
 fire.intensity = intensity;
 fire.t = 0;
+
 end
