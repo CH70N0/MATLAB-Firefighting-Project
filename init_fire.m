@@ -7,15 +7,13 @@ function fire = init_fire(params)
 %   All other cells start at intensity = 0. Also initializes simulation time t = 0.
 %
 % INPUT:
-%   params (struct) - contains at least the following fields:
-%       • gridSize         – [rows, cols] of the fire grid
-%       • initialHotspots  – number of random hotspots to place
-%       • initialPeak      – intensity value assigned to each hotspot (usually 1.0)
+%   params (struct):
+%       • grid_size – [rows, cols] of the fire grid
+%       • starting_hotspots  – number of random hotspots to place
 %
 % OUTPUT:
-%   fire (struct) with fields:
-%       • intensity – R×C matrix of fire intensity (values in [0,1])
-%       • t         – current simulation time (starts at 0)
+%   fire (struct):
+%       • intensity – RxC matrix of fire intensity (values in [0,1])
 %
 
 
@@ -34,7 +32,8 @@ for k = 1:params.starting_hotspots
 end
 
 % Store in struct
+fire = struct()
 fire.intensity = intensity;
-fire.t = 0;
 
 end
+
