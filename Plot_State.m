@@ -30,8 +30,9 @@ title(sprintf('LIVE Heat Map of Fire... Time = %.2f s', t));
         % position of drones on plot
         plot(currPos(1), currPos(2), 'o');
         % making sure to label each drone on plot
-        text(currPos(1), currPos(2)+ 0.5, drones(i).DroneID, ...
-            'HorizontalAlignment', 'center', 'color', 'blue');
+        % text(currPos(1), currPos(2)+ 0.5, drones(i).DroneID, ...
+        %     'HorizontalAlignment', 'center', 'color', 'blue');
+        text(currPos(1), currPos(2)+0.5, sprintf('D%d', i), 'HorizontalAlignment','center','color','blue');
 
     end
 
