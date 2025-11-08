@@ -13,7 +13,7 @@ function Plot_State(fire, params, drones, t)
 % using imagesc we create a visual heatmap of the fire thorught the
 % simulation
 figure(1); clf;
-imagesc(fire.intensity);
+imagesc(fire.intensity)
 colormap hot; 
 colorbar;
 hold on;
