@@ -14,7 +14,6 @@ function = fire_step(fire, params)
 %     - fire.spread - spread coefficient for the fire
 %
 %   params (struct):
-%     - params.spreadK – amount of fire spread to orthogonal neighbors per step
 %     - params.decay – global decay per step
 %     - params.t - current time
 %         
@@ -26,25 +25,26 @@ function = fire_step(fire, params)
 %   I(r,c)_{new} = clamp01( I(r,c) + k * (N + S + E + W) - decayK )
 %
 
-I = fire.intensity; % current intensity map
-k = params.spreadK; % orthogonal spread coefficient
+     I = fire.intensity; % current intensity map
+     k = fire.spread; % orthogonal spread coefficient
 
-% Orthogonal spread (N,S,E,W)
-K = [0 k 0;
-     k 0 k;
-     0 k 0];
-total_intensity = conv2(I, K, 'same'); % total intensity from orthongonal neighbors
-newI = I + total_intensity; % add fire from neighbors
+     % Orthogonal spread (N,S,E,W)
+     K = [0 k 0;
+          k 0 k;
+          0 k 0];
+     total_intensity = conv2(I, K, 'same'); % total intensity from orthongonal neighbors
+     newI = I + total_intensity; % add fire from neighbors
 
-% Global decay
-newI = newI - params.decayK;
+     % Global decay
+     newI = newI - params.decay;
 
-% Clamp to [0, 1]
-newI(newI < 0) = 0;
-newI(newI > 1) = 1;
+     % Clamp to [0, 1]
+     newI(newI < 0) = 0;
+     newI(newI > 1) = 1;
 
-% Save updated intensity back to struct
-fire.intensity = newI;
+     % Save updated intensity back to struct
+     fire.intensity = newI;
 end
+
 
 
