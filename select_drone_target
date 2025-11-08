@@ -15,3 +15,22 @@ end
 target = [row, col];                            % Give the target an (x,y) sort of postion but with rows and collums
 
 end
+
+function TrueOrFalse = is_target_valid(target, fire, stopThresh)
+
+    if isempty(target)        % checks if cell is empty
+        TrueOrFalse = false;  % Here true will be target valid, false will be target invalid
+        return;
+    end
+
+r = target(1);      % Row Target
+c = target(2);      % Column Target
+
+    if r < 1 || c < 1 || r > size(fire.intensity,1) || c > size(fire.intensity,2)  % If row < 1 OR collumn < 1 OR row > size of total rows OR col > size of total columns
+        TrueOrFalse = false;  % sets target to invalid if any one of the conditions above isn't met
+        return;
+    end
+
+TrueOrFalse = fire.intensity(r,c) >= stopThresh;  % Checks if intensity is less than or equal to the threshold to stop, meaning if target is still valid or not
+
+end
