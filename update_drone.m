@@ -33,7 +33,7 @@ drone.pos = proposedPos;                                                        
 
     if norm(drone.pos - drone.target) <= dropRadius                                    % Drops the water 
     
-    [fire, cellsExtinguished] = drop_water_at_target(fire, drone.target, dropRadius);  % Makes water cover fire cell now, extinguish
+    [fire, cellsExtinguished] = deployWater(fire, drone.target, dropRadius);  % Makes water cover fire cell now, extinguish
 
     drone.logs.extinguished_count = drone.logs.extinguished_count + cellsExtinguished;
 
