@@ -32,8 +32,8 @@ function fire = init_fire(params)
     end
 
     % Store in struct
-    fire = struct()
     fire.intensity = intensity;
 end
+
 
 
