@@ -33,8 +33,8 @@ k = params.spreadK; % orthogonal spread coefficient
 K = [0 k 0;
      k 0 k;
      0 k 0];
-incomingOrth = conv2(I, K, 'same');
-newI = I + incomingOrth;  % add fire from neighbors
+total_intensity = conv2(I, K, 'same'); % total intensity from orthongonal neighbors
+newI = I + total_intensity; % add fire from neighbors
 
 % Global decay
 newI = newI - params.decayK;
@@ -46,4 +46,5 @@ newI(newI > 1) = 1;
 % Save updated intensity back to struct
 fire.intensity = newI;
 end
+
 
