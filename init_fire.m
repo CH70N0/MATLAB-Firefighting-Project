@@ -17,23 +17,23 @@ function fire = init_fire(params)
 %
 
 
-% Grid dimensions
-row = params.grid_size(1);
-col = params.grid_size(2);
+    % Grid dimensions
+    row = params.grid_size(1);
+    col = params.grid_size(2);
 
-% Initialize an empty fire map
-intensity = zeros(row, col);
+    % Initialize an empty fire map
+    intensity = zeros(row, col);
 
-% Add random hotspots
-for k = 1:params.starting_hotspots
-    row0 = randi([3, row-2], 1);  % avoid edges
-    col0 = randi([3, col-2], 1);
-    intensity(row0, col0) = 1;
+    % Add random hotspots
+    for k = 1:params.starting_hotspots
+        row0 = randi([3, row-2], 1);  % avoid edges
+        col0 = randi([3, col-2], 1);
+        intensity(row0, col0) = 1;
+    end
+
+    % Store in struct
+    fire = struct()
+    fire.intensity = intensity;
 end
 
-% Store in struct
-fire = struct()
-fire.intensity = intensity;
-
-end
 
